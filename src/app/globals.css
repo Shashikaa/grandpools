@@ -1,0 +1,841 @@
+@import "tailwindcss";
+
+/* ─── Tailwind v4 Theme ──────────────────────────────────────── */
+@theme {
+  --font-display: var(--font-display), Georgia, serif;
+  --font-cormorant: var(--font-cormorant), Georgia, serif;
+  --font-body: var(--font-body), sans-serif;
+  --breakpoint-lg: 1025px;
+}
+
+/* ─── Design Tokens ──────────────────────────────────────────── */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --muted: #6b6b6b;
+  --muted-bg: #f5f5f5;
+  --border: #e5e5e5;
+  --accent: #171717;
+
+  --text-display: 40px;
+  --text-body: 16px;
+  --text-sm: 14px;
+  --text-xs: 12px;
+
+  --leading-display: 1.15;
+  --leading-body: 1.2;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+  --space-10: 128px;
+
+  --container-max: 1280px;
+  --container-pad: var(--space-6);
+  --section-py: var(--space-9);
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 150ms;
+  --duration-base: 300ms;
+  --duration-slow: 600ms;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --muted: #888888;
+    --muted-bg: #1a1a1a;
+    --border: #2a2a2a;
+    --accent: #ededed;
+  }
+}
+
+/* ─── Reset & Core Document Rules ────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: #162d24 !important;
+  color-scheme: dark;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: auto !important;
+  width: 100%;
+  /* Allow WebKit scroll engines to manage gestures naturally */
+  overscroll-behavior-y: none;
+}
+
+body {
+  background-color: #162d24 !important;
+  color: var(--foreground);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* ─── Unified Global Smooth Scroll & Hardware Engine ─────────── */
+html.lenis,
+html.lenis body {
+  height: auto !important;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped,
+body.scroll-locked {
+  overflow: hidden !important;
+}
+
+/* Keep links, forms and hover states responsive while scrolling. */
+
+[data-lenis-prevent],
+.overflow-y-auto,
+.overflow-auto {
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+[data-parallax],
+.will-animate {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform;
+}
+
+img,
+video {
+  image-rendering: -webkit-optimize-contrast;
+}
+
+@media (min-width: 1025px) {
+  section,
+  .scroll-container {
+    contain: content;
+  }
+}
+
+@media (max-width: 1024px) {
+  html,
+  body {
+    overscroll-behavior-x: none;
+  }
+
+  .pin-all,
+  .pin-all-home,
+  .pin-all-contact,
+  .pin-all-projects,
+  .pin-all-services {
+    touch-action: pan-y;
+  }
+}
+
+/* ─── Global Pins ────────────────────────────────────────────── */
+.pin-all,
+.pin-all-home,
+.pin-all-contact,
+.pin-all-projects,
+.pin-all-services,
+.pin-all-subservices,
+.pin-all-single-project {
+  height: 100svh !important;
+  min-height: 100svh !important;
+  width: 100%;
+  position: relative;
+}
+
+.pin-spacer {
+  min-height: 100svh !important;
+  pointer-events: auto !important;
+}
+
+.pin-spacer > div {
+  max-height: none !important;
+}
+
+.section-six-wrapper,
+.section-nine-wrapper {
+  overflow: hidden;
+}
+
+/* ─── Preloader Lock Rules ───────────────────────────────────── */
+html.preloading,
+body.preloading {
+  overflow: hidden !important;
+  height: 100% !important;
+  width: 100% !important;
+  touch-action: none !important;
+  background: linear-gradient(135deg, #162d24 0%, #094146 100%) !important;
+  background-color: #162d24 !important;
+}
+
+html.preloading .about-pin,
+html.preloading .contact-pin-master,
+html.preloading .master-viewport,
+html.preloading .pin-all-projects,
+html.preloading .services-hero-master,
+html.preloading .services-pin-master,
+body.preloading .about-pin,
+body.preloading .contact-pin-master,
+body.preloading .master-viewport,
+body.preloading .pin-all-projects,
+body.preloading .services-hero-master,
+body.preloading .services-pin-master {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+}
+
+html.preloading .site-root,
+body.preloading .site-root,
+html.preloading header,
+body.preloading header {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.site-root {
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+  opacity: 1;
+  visibility: visible;
+  transition: none !important;
+}
+
+html:not(.preloading) .home-desktop-scope,
+body:not(.preloading) .home-desktop-scope {
+}
+
+html:not(.preloading) .home-desktop-scope .hero,
+body:not(.preloading) .home-desktop-scope .hero {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-container {
+  position: relative;
+  width: 100%;
+}
+
+/* ─── Typography Classes ─────────────────────────────────────── */
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 100;
+}
+
+.font-cormorant {
+  font-family: var(--font-cormorant);
+  font-weight: 400;
+}
+
+.font-body {
+  font-family: var(--font-body);
+  font-weight: 400;
+}
+
+.text-display {
+  font-family: var(--font-display);
+  font-size: var(--text-display);
+  line-height: var(--leading-display);
+  letter-spacing: 0;
+}
+
+.text-cormorant {
+  font-family: var(--font-cormorant);
+  font-size: var(--text-display);
+  line-height: var(--leading-display);
+  letter-spacing: 0;
+  font-weight: 400;
+}
+
+.text-cormorant-light {
+  font-family: var(--font-cormorant);
+  font-weight: 300;
+}
+
+.text-cormorant-regular {
+  font-family: var(--font-cormorant);
+  font-weight: 400;
+}
+
+.text-cormorant-medium {
+  font-family: var(--font-cormorant);
+  font-weight: 500;
+}
+
+.text-cormorant-semibold {
+  font-family: var(--font-cormorant);
+  font-weight: 600;
+}
+
+.text-cormorant-bold {
+  font-family: var(--font-cormorant);
+  font-weight: 700;
+}
+
+.text-cormorant-italic {
+  font-family: var(--font-cormorant);
+  font-style: italic;
+}
+
+.text-body {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  letter-spacing: 0;
+  font-weight: 400;
+}
+
+.text-muted {
+  color: var(--muted);
+}
+
+/* ─── Layout & Utilities ─────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+.section {
+  padding-block: var(--section-py);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.section-container {
+  width: 100%;
+  margin: 0 auto;
+  padding-inline: 65px;
+  padding-block: 85px;
+}
+
+@media (max-width: 1025px) {
+  .section-container {
+    padding-inline: 30px;
+    padding-block: 75px;
+  }
+}
+
+@media (max-width: 767px) {
+  .section-container {
+    padding-inline: 20px;
+    padding-block: 65px;
+  }
+}
+
+.border {
+  border: 1px solid var(--border);
+}
+
+.border-t {
+  border-top: 1px solid var(--border);
+}
+
+.border-b {
+  border-bottom: 1px solid var(--border);
+}
+
+.rounded-sm {
+  border-radius: var(--radius-sm);
+}
+
+.rounded-md {
+  border-radius: var(--radius-md);
+}
+
+.rounded-lg {
+  border-radius: var(--radius-lg);
+}
+
+.rounded-full {
+  border-radius: var(--radius-full);
+}
+
+.transition {
+  transition: all var(--duration-base) var(--ease-out);
+}
+
+.transition-fast {
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+h1,
+h2,
+.h1,
+.h2 {
+  font-size: 72px;
+  line-height: 1.15;
+}
+
+p {
+  font-size: 16px;
+  line-height: var(--leading-body);
+}
+
+@media (max-width: 1024px) {
+  h1,
+  h2,
+  .h1,
+  .h2 {
+    font-size: 56px;
+    line-height: 1.3;
+  }
+
+  p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 767px) {
+  h1,
+  h2,
+  .h1,
+  .h2 {
+    font-size: 42px;
+    line-height: 1.3;
+  }
+
+  p {
+    font-size: 16px;
+  }
+}
+/* ─── Text Reveals ───────────────────────────────────────────── */
+.reveal-text {
+  perspective: 1000px;
+  backface-visibility: hidden;
+  opacity: 1;
+  visibility: visible;
+}
+
+.gs-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.15em;
+  margin-bottom: -0.15em;
+  perspective: 800px;
+}
+
+.gs-line-inner {
+  display: block !important;
+  will-change: transform, opacity;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.gs-word-wrapper {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.gs-word {
+  display: inline-block;
+  will-change: transform;
+}
+
+body:has(#not-found-page) #brand-preloader-root,
+body:has(#not-found-page) #fade-preloader-root,
+html.page-404 #brand-preloader-root,
+html.page-404 #fade-preloader-root {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* ─── Button Underline ───────────────────────────────────────── */
+a.btn-underline,
+button.btn-underline,
+.btn-underline {
+  position: relative !important;
+  display: inline-block !important;
+  width: fit-content !important;
+  padding-bottom: 4px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  text-transform: uppercase !important;
+  color: #f4eedf !important;
+  text-decoration: none !important;
+  flex-shrink: 0 !important;
+  transition: opacity 0.45s var(--ease-out) !important;
+}
+
+a.btn-underline:hover,
+button.btn-underline:hover,
+.btn-underline:hover {
+  opacity: 0.7 !important;
+}
+
+a.btn-underline::after,
+button.btn-underline::after,
+.btn-underline::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  height: 1px !important;
+  background-color: #f4eedf !important;
+  transform-origin: left center;
+  transition: transform 0.55s var(--ease-out) !important;
+}
+
+a.btn-underline:hover::after,
+button.btn-underline:hover::after,
+.btn-underline:hover::after {
+  transform: translateY(-2px) !important;
+}
+
+.info-img-layer {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: clip-path;
+}
+
+.info-image-inner {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+/* ─── Stack Track ────────────────────────────────────────────── */
+.about-stack-layer {
+  height: 100svh !important;
+  max-height: 100svh !important;
+}
+
+.about-stack-layer.layer-auto-height {
+  height: auto !important;
+  max-height: none !important;
+  min-height: 100svh;
+}
+
+/* ─── Hero Intro Animations ──────────────────────────────────── */
+
+@keyframes textMaskReveal {
+  0% {
+    transform: translate3d(0, 0%, 0);
+  }
+
+  100% {
+    transform: translate3d(0, -101%, 0);
+  }
+}
+
+.hero-bg-target,
+.about-hero-bg,
+.contact-hero-bg {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+@media (max-width: 767px) {
+  .hero-bg-target,
+  .about-hero-bg,
+  .contact-hero-bg {
+  }
+}
+
+.hero-text-target {
+  position: relative;
+  display: inline-block;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+@media (max-width: 767px) {
+}
+
+/*
+ * Pre-hydration visibility for <ResponsiveTree>.
+ *
+ * The server sends the desktop tree. Below MOBILE_MAX_WIDTH (1024px, see
+ * src/lib/breakpoints.ts) it is hidden until the client swaps in the mobile
+ * tree, so phones never see the desktop layout flash. Kept in sync with the
+ * 1024px tier used elsewhere in this file.
+ *
+ * Scoped to html.js (set by an inline script in layout.tsx) so that a visitor
+ * with JavaScript disabled still sees the desktop content instead of a blank
+ * page.
+ */
+@media (max-width: 1024px) {
+  html.js .rs-tree-unresolved > *:first-child {
+    display: none !important;
+  }
+}
+
+/*
+ * Reduced motion: collapse the pinned scroll track.
+ *
+ * The pinned sections reserve roughly 7.8 viewport-heights of scroll distance
+ * purely to drive the rAF scrub. With the loops disabled (see
+ * src/lib/reducedMotion.ts) that distance is just empty scrolling, so clamp the
+ * track to a single viewport and let content flow normally.
+ */
+@media (prefers-reduced-motion: reduce) {
+  /*
+   * Applied by class rather than a JS media-query check, because the track
+   * height is rendered on the server. Reading matchMedia during render would
+   * differ from the server HTML and trigger a hydration mismatch. !important
+   * is required to override the inline style.
+   */
+  /*
+   * NOTE: the track height is deliberately NOT collapsed here. The pinned
+   * sections position their children absolutely against a fixed-height frame,
+   * so forcing the track to auto height collapses the frame to zero and takes
+   * the content with it. Scroll distance is left as authored; what is removed
+   * is the animation, not the layout.
+   */
+
+  /*
+   * The scrub loop reveals whole sections by flipping visibility on
+   * structural layers as the playhead passes them (e.g.
+   * `secNine.style.visibility = stepProgress >= 12.1 ? "visible" : "hidden"`).
+   * With the loop disabled nothing ever runs that line, so those layers would
+   * stay hidden forever and their content becomes unreachable. Reveal them all.
+   *
+   * structural-layer is the shared marker on those pinned layers;
+   * .s9-title and friends carry the hidden state directly.
+   */
+
+  /* Split lines were parked below their clipping wrapper; bring them home. */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
+/* Pause animation on hover if desired */
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+/* Motion masks do not capture input or alter the authored heading metrics. */
+.gs-line-outer { overflow: clip; }
+@media (prefers-reduced-motion: reduce) {
+}
+
+/* Local stories and masked entries share one document scroll. */
+.luxury-stage { position: relative; width: 100%; background: #162d24; }
+.luxury-stage-view { position: relative; height: 100svh; width: 100%; overflow: visible; }
+.luxury-stage-reveal { position: relative; height: 100%; width: 100%; overflow: hidden; }
+.luxury-stage-surface { position: relative; height: 100%; width: 100%; overflow: hidden; }
+.luxury-flow .luxury-stage-view { height: auto; min-height: 100svh; overflow: visible; }
+.luxury-flow .luxury-stage-reveal, .luxury-flow .luxury-stage-surface { height: auto; min-height: 100svh; }
+.luxury-line-mask { overflow: clip; padding-bottom: .14em; margin-bottom: -.14em; }
+.luxury-line { backface-visibility: hidden; transform-origin: 0 100%; }
+.luxury-page .reveal-text { visibility: visible; }
+.luxury-page .hero-right-text-wrap { position: absolute !important; top: 43% !important; right: 5vw !important; left: auto !important; transform: none; }
+.luxury-page .hero-secondary-text-wrap { position: absolute !important; top: auto !important; bottom: 19vh !important; left: 6vw !important; }
+.luxury-page .hero-left-initial { position: relative !important; top: auto !important; left: auto !important; right: auto !important; }
+.luxury-page [data-luxury-stage="home-hero"] .hero-left-initial { overflow: visible; }
+.luxury-page .s9-para-desktop { opacity: 1; }
+.luxury-page .s9-native-title-wrapper-1, .luxury-page .s9-native-title-wrapper-2 { top: 32%; }
+.luxury-page .s9-para-desktop { position: absolute; bottom: 0; right: 0; }
+.luxury-page .hero-title-target, .luxury-page .hero-desc-target { animation: none !important; }
+.luxury-page .s2-scroll-content { visibility: visible; }
+@media (max-width:1024px) {
+  .luxury-page .hero-left-initial { position: absolute !important; top: 16svh !important; left: 24px !important; right: 24px !important; }
+  .luxury-page .hero-right-text-wrap { top: 42% !important; left: 24px !important; right: 24px !important; max-width: calc(100% - 48px); }
+  .luxury-page .hero-secondary-text-wrap { left: 24px !important; right: 24px !important; max-width: calc(100% - 48px); }
+  .luxury-app .luxury-stage-surface > section { padding-top: 90px; padding-bottom: 70px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .luxury-stage-view, .luxury-stage-reveal, .luxury-stage-surface { transform: none !important; clip-path: none !important; }
+  .luxury-line { opacity: 1 !important; transform: none !important; }
+}
+
+.luxury-page section { contain: none !important; }
+.luxury-page [data-luxury-stage="contact-story"] .luxury-stage-view { min-height: 100svh; }
+@media (max-width:1024px) {
+  .luxury-page [data-luxury-stage="contact-story"] .luxury-stage-view,
+  .luxury-page [data-luxury-stage="contact-story"] .luxury-stage-surface { height: auto; min-height: 100svh; }
+}
+/* The hero copy is positioned against the full scene, never its shrinking CTA column. */
+.luxury-page [data-luxury-stage="home-hero"] .hero > .section-container > div:first-child,
+.luxury-page [data-luxury-stage="home-hero"] .hero > .section-container > div:last-child { position: static !important; }
+.luxury-page [data-luxury-stage="home-hero"] .hero-right-text-wrap { width: min(420px, calc(100vw - 48px)) !important; }
+@media (min-width:1025px) {
+  .luxury-pricing .luxury-stage-view, .luxury-pricing .luxury-stage-surface { height: 100svh; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .luxury-page [data-luxury-stage="home-hero"] .luxury-stage-view,
+  .luxury-page [data-luxury-stage="home-hero"] .luxury-stage-surface,
+  .luxury-page [data-luxury-stage="process"] .luxury-stage-view,
+  .luxury-page [data-luxury-stage="process"] .luxury-stage-surface,
+  .luxury-page [data-luxury-stage="quality"] .luxury-stage-view,
+  .luxury-page [data-luxury-stage="quality"] .luxury-stage-surface,
+  .luxury-page [data-luxury-stage="service-story"] .luxury-stage-view,
+  .luxury-page [data-luxury-stage="service-story"] .luxury-stage-surface { height:auto; overflow:visible; }
+  .luxury-page [data-luxury-stage="home-hero"] .hero > .section-container { min-height:100svh; padding-top:110px; }
+  .luxury-page .hero-left-initial, .luxury-page .hero-right-text-wrap, .luxury-page .hero-secondary-text-wrap { position:relative !important; inset:auto !important; transform:none !important; opacity:1 !important; visibility:visible !important; margin-bottom:32px; }
+  .luxury-page .s2-scroll-content, .luxury-page .s2-mob-scroll-wrapper { position:relative; top:auto; transform:none !important; opacity:1; margin-top:100svh; }
+  .luxury-page .s10-seq-container { position:relative; top:auto; transform:none; }
+  .luxury-page [data-luxury-stage="service-story"] .s10-content-initial { min-height:100svh; }
+  .luxury-page [data-luxury-stage="quality"] > .luxury-stage-view > .luxury-stage-reveal > .luxury-stage-surface > section { min-height:100svh; padding:110px 24px; }
+  .luxury-page [data-luxury-stage="quality"] .s10-title,
+  .luxury-page [data-luxury-stage="quality"] .s10-title-sub,
+  .luxury-page [data-luxury-stage="quality"] .s10-para-top,
+  .luxury-page [data-luxury-stage="quality"] .s10-content-wrap,
+  .luxury-page [data-luxury-stage="quality"] .s10-scrollable-container { position:relative; inset:auto; width:auto; max-width:600px; margin:24px 0; }
+}
+@media (max-width:1024px) {
+  .luxury-page .s2-mob-row2, .luxury-page .s2-mob-row3, .luxury-page .s2-mob-row4 { margin-top:32svh !important; }
+}
+/* Masked handoffs: the reveal wrapper counters normal flow during entry.
+   Keep the view overflow visible so the wrapper can occupy the viewport above it. */
+.site-root { will-change:auto; contain:none; overflow-x:clip; }
+.luxury-page { isolation:isolate; }
+.luxury-stage { background:transparent; }
+.luxury-stage + .luxury-stage { margin-top:-100svh; }
+.luxury-stage-view { isolation:isolate; }
+.luxury-stage[data-hold="sticky"] > .luxury-stage-view { position:sticky; top:var(--scene-top,0px); }
+.luxury-word { white-space:nowrap; }
+.luxury-char { backface-visibility:hidden; transform-origin:50% 100%; }
+.luxury-handoff-shade { position:absolute; inset:0; z-index:1000; background:#000; opacity:0; pointer-events:none; }
+.luxury-page .s9-native-title-wrapper-1, .luxury-page .s9-native-title-wrapper-2 { top:50%; }
+.luxury-page .s9-flight-wrapper { translate:none; will-change:transform; }
+.luxury-page .s9-para-desktop { position:relative; bottom:auto; right:auto; }
+@media(prefers-reduced-motion:reduce){
+  .luxury-stage + .luxury-stage { margin-top:0; }
+  .luxury-handoff-shade { display:none; }
+  .luxury-stage-reveal { height:auto; min-height:100svh; overflow:visible; }
+}
+.luxury-page [data-luxury-stage="about-hero"] .luxury-stage-surface > section { z-index:2; }
+.about-hero-underlay { opacity:0; visibility:hidden; position:absolute; inset:0; z-index:0; height:100%; width:100%; }
+
+/* Independent image scale keeps text, panels and existing transform animations stable. */
+[data-scene-bg] { scale:var(--scene-image-zoom,1); transform-origin:center; }
+@media(prefers-reduced-motion:reduce) { [data-scene-bg] { scale:1 !important; } }
+
+/* A single revealed layer scrolls from Experts into the app without a handoff. */
+.luxury-expert-panel { height:100svh; width:100%; position:relative; }
+.luxury-app-panel { min-height:100svh; width:100%; position:relative; }
+@media(max-width:1024px) {
+  .luxury-app-panel > section { padding-top:90px; padding-bottom:70px; }
+}
+
+/* Stats remains one viewport on phones/tablets; both panels fit the scene. */
+@media (max-width:1024px) {
+  .luxury-about-stats .s5-stats-section { height:100svh; min-height:0; }
+  .luxury-about-stats .s5-right-panel { min-height:0; padding:16px 24px; }
+  .luxury-about-stats .s5-stat-content { height:min(240px,38svh); }
+  .luxury-about-stats .s5-image-panel h2 { font-size:clamp(24px,4.5svh,40px); }
+}
+
+/* Before story measurement, negative margins must never expose later scenes. */
+.luxury-page:not([data-layout-ready="true"]) > .luxury-stage:not(:first-child) { opacity:0; visibility:hidden; }
+.luxury-stage[data-transition="flow"] { margin-top:0; }
+@media(max-width:1024px) {
+  .subservice-hero-underlay { padding-top:34svh !important; justify-content:flex-start; gap:24px; }
+  .subservice-hero-tabs { margin-top:0 !important; }
+}
+
+.luxury-page:not([data-layout-ready="true"]) .hero-secondary-text-wrap,
+.luxury-page:not([data-layout-ready="true"]) .hero-right-text-wrap { opacity:0 !important; }
+
+.luxury-page .hero-right-text-wrap { translate:none; }
+@media(max-width:1024px) {
+  .luxury-page .hero-bg { background-image:url('/mobile/hero-home.webp') !important; }
+  .responsive-background { background-image:var(--mobile-scene-image) !important; }
+}
+
+@media(max-width:1024px) {
+  .s9-bg-mobile { background-image:url('/mobile/secninebg.webp') !important; }
+}
+
+/* The About photo may decode after the loader; its curtains must stay opaque. */
+.about-hero-panel-left,.about-hero-panel-right { background:#162d24; }
+
+/* Transparent scene tracks never intercept the exposed scene below. Input is
+   restored only inside the actual clipped content surface. */
+.luxury-stage { pointer-events:none; }
+.luxury-stage-surface { pointer-events:auto; }
+/* Hide authored Home copy until SplitText and the story have been prepared. */
+.luxury-stage[data-luxury-stage="home-hero"]:not([data-motion-ready="true"]) .hero-left-initial { visibility:hidden; }
+
+/* Split invitation panels move independently. Their transparent full-screen
+   wrapper must not cover the pricing controls before either panel arrives. */
+.luxury-stage[data-luxury-stage="invitation"] .luxury-stage-surface,
+.luxury-stage[data-luxury-stage="invitation"] .s9-section { pointer-events:none; }
+
+/* Auren's rolling letters, scoped to CTA text; existing button chrome stays. */
+.button-roll { display:inline-block; overflow:clip; vertical-align:bottom; white-space:nowrap; line-height:1.5; }
+.button-roll-char { display:inline-block; text-shadow:0 -4em currentColor; transform:translateY(0); transition:transform .5s cubic-bezier(.65,0,.35,1); transition-delay:var(--char-delay); }
+@media (hover:hover) and (pointer:fine) {
+ .btn-underline:not(:disabled):hover .button-roll-char { transform:translateY(4em); }
+}
+.btn-underline:not(:disabled):focus-visible .button-roll-char { transform:translateY(4em); }
+@media (prefers-reduced-motion:reduce) {
+ .button-roll-char { transition:none; transform:none !important; }
+}

@@ -1,0 +1,1053 @@
+{
+  "optimized": 116,
+  "bytesBefore": 48053262,
+  "bytesAfter": 27990064,
+  "mobileVariants": 21,
+  "files": [
+    {
+      "file": ".webp",
+      "before": 515906,
+      "after": 332646,
+      "width": 1920,
+      "height": 1080,
+      "originalWidth": 8064,
+      "originalHeight": 4536
+    },
+    {
+      "file": "Background.jpg",
+      "before": 936175,
+      "after": 15389,
+      "width": 1920,
+      "height": 1080,
+      "originalWidth": 3840,
+      "originalHeight": 2160
+    },
+    {
+      "file": "CTA-FORM.webp",
+      "before": 46036,
+      "after": 10056,
+      "width": 1920,
+      "height": 1067,
+      "originalWidth": 5760,
+      "originalHeight": 3200
+    },
+    {
+      "file": "CTA.webp",
+      "before": 20362,
+      "after": 12340,
+      "width": 1920,
+      "height": 1279,
+      "originalWidth": 3420,
+      "originalHeight": 2279
+    },
+    {
+      "file": "CTAFORM.webp",
+      "before": 22934,
+      "after": 18278,
+      "width": 1920,
+      "height": 1066,
+      "originalWidth": 2400,
+      "originalHeight": 1333
+    },
+    {
+      "file": "CTAmob.webp",
+      "before": 17932,
+      "after": 9154,
+      "width": 887,
+      "height": 1920,
+      "originalWidth": 1560,
+      "originalHeight": 3376
+    },
+    {
+      "file": "Craftsmanship.webp",
+      "before": 165196,
+      "after": 234138,
+      "width": 1920,
+      "height": 1244,
+      "originalWidth": 2420,
+      "originalHeight": 1568
+    },
+    {
+      "file": "Forest.webp",
+      "before": 81740,
+      "after": 139108,
+      "width": 1920,
+      "height": 1194,
+      "originalWidth": 2624,
+      "originalHeight": 1632
+    },
+    {
+      "file": "ForestMob.webp",
+      "before": 46994,
+      "after": 52372,
+      "width": 887,
+      "height": 1920,
+      "originalWidth": 1560,
+      "originalHeight": 3376
+    },
+    {
+      "file": "Grand Pools Home Page 62.webp",
+      "before": 46262,
+      "after": 9986,
+      "width": 1920,
+      "height": 1067,
+      "originalWidth": 5760,
+      "originalHeight": 3200
+    },
+    {
+      "file": "PremiumPool.webp",
+      "before": 15566,
+      "after": 8396,
+      "width": 887,
+      "height": 1920,
+      "originalWidth": 1560,
+      "originalHeight": 3376
+    },
+    {
+      "file": "Service1.webp",
+      "before": 53194,
+      "after": 15970,
+      "width": 1920,
+      "height": 1067,
+      "originalWidth": 5760,
+      "originalHeight": 3200
+    },
+    {
+      "file": "Wellness.webp",
+      "before": 136594,
+      "after": 70488,
+      "width": 1920,
+      "height": 1067,
+      "originalWidth": 5760,
+      "originalHeight": 3200
+    },
+    {
+      "file": "about-mob.webp",
+      "before": 146100,
+      "after": 171950,
+      "width": 887,
+      "height": 1920,
+      "originalWidth": 1560,
+      "originalHeight": 3376
+    },
+    {
+      "file": "about-paralell.webp",
+      "before": 959386,
+      "after": 323844,
+      "width": 1280,
+      "height": 1920,
+      "originalWidth": 4000,
+      "originalHeight": 6000
+    },
+    {
+      "file": "about-vertical-image.avif",
+      "before": 356070,
+      "after": 277608,
+      "width": 1080,
+      "height": 1337,
+      "originalWidth": 1080,
+      "originalHeight": 1337
+    },
+    {
+      "file": "appsection-mobile.webp",
+      "before": 16840,
+      "after": 7564,
+      "width": 887,
+      "height": 1920,
+      "originalWidth": 1560,
+      "originalHeight": 3376
+    },
+    {
+      "file": "appsection.webp",
+      "before": 86296,
+      "after": 15692,
+      "width": 1920,
+      "height": 1080,
+      "originalWidth": 7680,
+      "originalHeight": 4320
+    },
+    {
+      "file": "camberwell.webp",
+      "before": 480716,
+      "after": 257578,
+      "width": 1920,
+      "height": 1080,
+      "originalWidth": 8064,
+      "originalHeight": 4536
+    },
+    {
+      "file": "camberwell1.webp",
+      "before": 480230,
+      "after": 283250,
+      "width": 1920,
+      "height": 1080,
+      "originalWidth": 8064,
+      "originalHeight": 4536
+    },
+    {
+      "file": "camberwell2.webp",
+      "before": 589474,
+      "after": 285060,
+      "width": 1920,
+      "height": 1080,
+      "originalWidth": 8064,
+      "originalHeight": 4536
+    },
+    {
+      "file": "camberwell3.webp",
+      "before": 347962,
+      "after": 233134,
+      "width": 1920,
+      "height": 1280,
+      "originalWidth": 6000,
+      "originalHeight": 4000
+    },
+    {
+      "file": "camberwell4.webp",
+      "before": 421660,
+      "after": 297340,
+      "width": 1280,
+      "height": 1920,
+      "originalWidth": 4000,
+      "originalHeight": 6000
+    },
+    {
+      "file": "camberwell5.webp",
+      "before": 601040,
+      "after": 362922,
+      "width": 1920,
+      "height": 1280,
+      "originalWidth": 6000,
+      "originalHeight": 4000
+    },
+    {
+      "file": "camberwell6.webp",
+      "before": 387810,
+      "after": 269776,
+      "width": 1280,
+      "height": 1920,
+      "originalWidth": 4000,
+      "originalHeight": 6000
+    },
+    {
+      "file": "contacthero.webp",
+      "before": 425108,
+      "after": 102662,
+      "width": 1920,
+      "height": 953,
+      "originalWidth": 7656,
+      "originalHeight": 3800
+    },
+    {
+      "file": "contactparalax.webp",
+      "before": 77620,
+      "after": 128382,
+      "width": 1440,
+      "height": 1920,
+      "originalWidth": 1443,
+      "originalHeight": 1924
+    },
+    {
+      "file": "faqbg.webp",
+      "before": 427412,
+      "after": 106466,
+      "width": 1920,
+      "height": 1080,
+      "originalWidth": 7680,
+      "originalHeight": 4320
+    },
+    {
+      "file": "hero-about-mobile.webp",
+      "before": 234588,
+      "after": 266618,
+      "width": 1081,
+      "height": 1920,
+      "originalWidth": 1900,
+      "originalHeight": 3376
+    },
+    {
+      "file": "hero-about.webp",
+      "before": 951490,
+      "after": 303540,
+      "width": 1920,
+      "height": 1280,
+      "originalWidth": 9319,
+      "originalHeight": 6212
+    },
+    {
+      "file": "hero-home.webp",
+      "before": 784872,
+      "after": 365046,
+      "width": 1920,
+      "height": 1080,
+      "originalWidth": 7680,
+      "originalHeight": 4320
+    },
+    {
+      "file": "hero-mobile.webp",
+      "before": 36474,
+      "after": 51380,
+      "width": 1071,
+      "height": 1920,
+      "originalWidth": 1500,
+      "originalHeight": 2688
+    },
+    {
+      "file": "hero-murray.webp",
+      "before": 311158,
+      "after": 363952,
+      "width": 1440,
+      "height": 1920,
+      "originalWidth": 1920,
+      "originalHeight": 2560
+    },
+    {
+      "file": "hero.webp",
+      "before": 482874,
+      "after": 322894,
+      "width": 1920,
+      "height": 1280,
+      "originalWidth": 4096,
+      "originalHeight": 2731
+    },
+    {
+      "file": "heroHome.webp",
+      "before": 728338,
+      "after": 273006,
+      "width": 1920,
+      "height": 1081,
+      "originalWidth": 8188,
+      "originalHeight": 4608
+    },
+    {
+      "file": "image 1.webp",
+      "before": 410576,
+      "after": 182476,
+      "width": 1920,
+      "height": 1080,
+      "originalWidth": 7680,
+      "originalHeight": 4320
+    },
+    {
+      "file": "image 9 (1).webp",
+      "before": 1036230,
+      "after": 406278,
+      "width": 1920,
+      "height": 1082,
+      "originalWidth": 7668,
+      "originalHeight": 4320
+    },
+    {
+      "file": "image 9 (2).webp",
+      "before": 1085220,
+      "after": 448500,
+      "width": 1920,
+      "height": 1080,
+      "originalWidth": 7680,
+      "originalHeight": 4320
+    },
+    {
+      "file": "image 9 (4).webp",
+      "before": 468318,
+      "after": 184022,
+      "width": 1920,
+      "height": 1080,
+      "originalWidth": 7680,
+      "originalHeight": 4320
+    },
+    {
+      "file": "kooyong/img-1.webp",
+      "before": 410576,
+      "after": 182476,
+      "width": 1920,
+      "height": 1080,
+      "originalWidth": 7680,
+      "originalHeight": 4320
+    },
+    {
+      "file": "kooyong/img-2.webp",
+      "before": 1036230,
+      "after": 406278,
+      "width": 1920,
+      "height": 1082,
+      "originalWidth": 7668,
+      "originalHeight": 4320
+    },
+    {
+      "file": "kooyong/img-3.webp",
+      "before": 1085220,
+      "after": 448500,
+      "width": 1920,
+      "height": 1080,
+      "originalWidth": 7680,
+      "originalHeight": 4320
+    },
+    {
+      "file": "kooyong/img-4.webp",
+      "before": 887380,
+      "after": 317028,
+      "width": 1920,
+      "height": 1080,
+      "originalWidth": 7680,
+      "originalHeight": 4320
+    },
+    {
+      "file": "kooyong/img-5.webp",
+      "before": 468318,
+      "after": 184022,
+      "width": 1920,
+      "height": 1080,
+      "originalWidth": 7680,
+      "originalHeight": 4320
+    },
+    {
+      "file": "kooyong/img-6.webp",
+      "before": 1232116,
+      "after": 515980,
+      "width": 1920,
+      "height": 1643,
+      "originalWidth": 7400,
+      "originalHeight": 6332
+    },
+    {
+      "file": "kooyong-rd-toorak.webp",
+      "before": 515466,
+      "after": 455444,
+      "width": 1280,
+      "height": 1920,
+      "originalWidth": 2731,
+      "originalHeight": 4096
+    },
+    {
+      "file": "longpool.webp",
+      "before": 887380,
+      "after": 317028,
+      "width": 1920,
+      "height": 1080,
+      "originalWidth": 7680,
+      "originalHeight": 4320
+    },
+    {
+      "file": "marvin-van-mobile.webp",
+      "before": 13996,
+      "after": 9318,
+      "width": 887,
+      "height": 1920,
+      "originalWidth": 1560,
+      "originalHeight": 3376
+    },
+    {
+      "file": "marvin-van.webp",
+      "before": 50230,
+      "after": 13578,
+      "width": 1920,
+      "height": 1080,
+      "originalWidth": 5760,
+      "originalHeight": 3240
+    },
+    {
+      "file": "menu-contact.webp",
+      "before": 120178,
+      "after": 234908,
+      "width": 1280,
+      "height": 1920,
+      "originalWidth": 1920,
+      "originalHeight": 2880
+    },
+    {
+      "file": "menu-home-new.webp",
+      "before": 44904,
+      "after": 148426,
+      "width": 1280,
+      "height": 1920,
+      "originalWidth": 1920,
+      "originalHeight": 2880
+    },
+    {
+      "file": "mernda-ave-bonbeach.webp",
+      "before": 517386,
+      "after": 341040,
+      "width": 1920,
+      "height": 1280,
+      "originalWidth": 4096,
+      "originalHeight": 2731
+    },
+    {
+      "file": "murray-st-prahran-mobile.webp",
+      "before": 141314,
+      "after": 195674,
+      "width": 1071,
+      "height": 1920,
+      "originalWidth": 1500,
+      "originalHeight": 2688
+    },
+    {
+      "file": "murray-st-prahran.webp",
+      "before": 518776,
+      "after": 402006,
+      "width": 1440,
+      "height": 1920,
+      "originalWidth": 3024,
+      "originalHeight": 4032
+    },
+    {
+      "file": "og-image.jpg",
+      "before": 876087,
+      "after": 464502,
+      "width": 1440,
+      "height": 1920,
+      "originalWidth": 2000,
+      "originalHeight": 2667
+    },
+    {
+      "file": "p11.jpg",
+      "before": 791977,
+      "after": 415597,
+      "width": 1440,
+      "height": 1920,
+      "originalWidth": 2000,
+      "originalHeight": 2667
+    },
+    {
+      "file": "p12.jpg",
+      "before": 920531,
+      "after": 544849,
+      "width": 1440,
+      "height": 1920,
+      "originalWidth": 2000,
+      "originalHeight": 2667
+    },
+    {
+      "file": "p13.webp",
+      "before": 121534,
+      "after": 338546,
+      "width": 1440,
+      "height": 1920,
+      "originalWidth": 1600,
+      "originalHeight": 2134
+    },
+    {
+      "file": "p14.webp",
+      "before": 115468,
+      "after": 329746,
+      "width": 1440,
+      "height": 1920,
+      "originalWidth": 1600,
+      "originalHeight": 2134
+    },
+    {
+      "file": "p15.webp",
+      "before": 139040,
+      "after": 370656,
+      "width": 1440,
+      "height": 1920,
+      "originalWidth": 1600,
+      "originalHeight": 2134
+    },
+    {
+      "file": "p17.webp",
+      "before": 110880,
+      "after": 316348,
+      "width": 1440,
+      "height": 1920,
+      "originalWidth": 1500,
+      "originalHeight": 2000
+    },
+    {
+      "file": "p3.webp",
+      "before": 184524,
+      "after": 403464,
+      "width": 1440,
+      "height": 1920,
+      "originalWidth": 1920,
+      "originalHeight": 2560
+    },
+    {
+      "file": "p4.webp",
+      "before": 129302,
+      "after": 269230,
+      "width": 1440,
+      "height": 1920,
+      "originalWidth": 1920,
+      "originalHeight": 2560
+    },
+    {
+      "file": "p7.webp",
+      "before": 106314,
+      "after": 252836,
+      "width": 1440,
+      "height": 1920,
+      "originalWidth": 1600,
+      "originalHeight": 2134
+    },
+    {
+      "file": "p8.webp",
+      "before": 149346,
+      "after": 342666,
+      "width": 1440,
+      "height": 1920,
+      "originalWidth": 1600,
+      "originalHeight": 2134
+    },
+    {
+      "file": "p9.webp",
+      "before": 228098,
+      "after": 451690,
+      "width": 1440,
+      "height": 1920,
+      "originalWidth": 1600,
+      "originalHeight": 2134
+    },
+    {
+      "file": "parallax-image-about-mobile.webp",
+      "before": 74566,
+      "after": 89880,
+      "width": 887,
+      "height": 1920,
+      "originalWidth": 1560,
+      "originalHeight": 3376
+    },
+    {
+      "file": "parallax-image-about.webp",
+      "before": 907480,
+      "after": 150574,
+      "width": 1919,
+      "height": 1920,
+      "originalWidth": 9656,
+      "originalHeight": 9660
+    },
+    {
+      "file": "parallax-image-mobile.webp",
+      "before": 544192,
+      "after": 447614,
+      "width": 1440,
+      "height": 1920,
+      "originalWidth": 3072,
+      "originalHeight": 4096
+    },
+    {
+      "file": "person.png",
+      "before": 402062,
+      "after": 392398,
+      "width": 1920,
+      "height": 1196,
+      "originalWidth": 2365,
+      "originalHeight": 1473
+    },
+    {
+      "file": "phone-mockup.webp",
+      "before": 159418,
+      "after": 102966,
+      "width": 936,
+      "height": 1920,
+      "originalWidth": 1688,
+      "originalHeight": 3464
+    },
+    {
+      "file": "pool-courtyard-bg-mobile.webp",
+      "before": 488364,
+      "after": 267926,
+      "width": 887,
+      "height": 1920,
+      "originalWidth": 1560,
+      "originalHeight": 3376
+    },
+    {
+      "file": "pool-mobile.webp",
+      "before": 75970,
+      "after": 113728,
+      "width": 1071,
+      "height": 1920,
+      "originalWidth": 1500,
+      "originalHeight": 2688
+    },
+    {
+      "file": "pool-new.webp",
+      "before": 437814,
+      "after": 288264,
+      "width": 1920,
+      "height": 1280,
+      "originalWidth": 4096,
+      "originalHeight": 2731
+    },
+    {
+      "file": "pool-renovation-mobile.webp",
+      "before": 314840,
+      "after": 207664,
+      "width": 1072,
+      "height": 1920,
+      "originalWidth": 1760,
+      "originalHeight": 3152
+    },
+    {
+      "file": "pool-renovation.webp",
+      "before": 556866,
+      "after": 403576,
+      "width": 1920,
+      "height": 1440,
+      "originalWidth": 4032,
+      "originalHeight": 3024
+    },
+    {
+      "file": "pool-water-reflect.png",
+      "before": 718081,
+      "after": 594684,
+      "width": 1920,
+      "height": 891,
+      "originalWidth": 1920,
+      "originalHeight": 891
+    },
+    {
+      "file": "pool.webp",
+      "before": 495070,
+      "after": 263502,
+      "width": 1920,
+      "height": 1067,
+      "originalWidth": 5760,
+      "originalHeight": 3200
+    },
+    {
+      "file": "preloader.webp",
+      "before": 42004,
+      "after": 8994,
+      "width": 1920,
+      "height": 1067,
+      "originalWidth": 5760,
+      "originalHeight": 3200
+    },
+    {
+      "file": "project-aerial.webp",
+      "before": 1232116,
+      "after": 515980,
+      "width": 1920,
+      "height": 1643,
+      "originalWidth": 7400,
+      "originalHeight": 6332
+    },
+    {
+      "file": "project-aerial1.webp",
+      "before": 1770976,
+      "after": 532802,
+      "width": 1440,
+      "height": 1920,
+      "originalWidth": 7149,
+      "originalHeight": 9532
+    },
+    {
+      "file": "project-aerial2.webp",
+      "before": 691306,
+      "after": 522998,
+      "width": 1440,
+      "height": 1920,
+      "originalWidth": 4360,
+      "originalHeight": 5814
+    },
+    {
+      "file": "projects.webp",
+      "before": 864676,
+      "after": 305796,
+      "width": 1920,
+      "height": 871,
+      "originalWidth": 6956,
+      "originalHeight": 3156
+    },
+    {
+      "file": "projectshero.webp",
+      "before": 683336,
+      "after": 220012,
+      "width": 1920,
+      "height": 1280,
+      "originalWidth": 7704,
+      "originalHeight": 5136
+    },
+    {
+      "file": "rosy-rd-mooroolbark.webp",
+      "before": 468356,
+      "after": 382510,
+      "width": 1440,
+      "height": 1920,
+      "originalWidth": 3024,
+      "originalHeight": 4032
+    },
+    {
+      "file": "sec-five.webp",
+      "before": 524852,
+      "after": 401770,
+      "width": 1440,
+      "height": 1920,
+      "originalWidth": 3024,
+      "originalHeight": 4032
+    },
+    {
+      "file": "sec2.webp",
+      "before": 449138,
+      "after": 265356,
+      "width": 890,
+      "height": 1920,
+      "originalWidth": 1560,
+      "originalHeight": 3364
+    },
+    {
+      "file": "secnine.webp",
+      "before": 401222,
+      "after": 155190,
+      "width": 1920,
+      "height": 1080,
+      "originalWidth": 7680,
+      "originalHeight": 4320
+    },
+    {
+      "file": "secninemob.jpg",
+      "before": 388689,
+      "after": 62739,
+      "width": 390,
+      "height": 844,
+      "originalWidth": 390,
+      "originalHeight": 844
+    },
+    {
+      "file": "section-reviews-bg.webp",
+      "before": 213862,
+      "after": 75906,
+      "width": 1920,
+      "height": 1080,
+      "originalWidth": 7680,
+      "originalHeight": 4320
+    },
+    {
+      "file": "sectionOne-mobile.webp",
+      "before": 109336,
+      "after": 168422,
+      "width": 1081,
+      "height": 1920,
+      "originalWidth": 1461,
+      "originalHeight": 2595
+    },
+    {
+      "file": "sectionOne.webp",
+      "before": 531800,
+      "after": 204602,
+      "width": 1920,
+      "height": 1081,
+      "originalWidth": 7764,
+      "originalHeight": 4372
+    },
+    {
+      "file": "sectionseven-mobile.webp",
+      "before": 69516,
+      "after": 85466,
+      "width": 887,
+      "height": 1920,
+      "originalWidth": 1560,
+      "originalHeight": 3376
+    },
+    {
+      "file": "sectiontwo-about-mobile.webp",
+      "before": 119544,
+      "after": 141746,
+      "width": 887,
+      "height": 1920,
+      "originalWidth": 1560,
+      "originalHeight": 3376
+    },
+    {
+      "file": "sectiontwo-left-sub.webp",
+      "before": 245122,
+      "after": 354878,
+      "width": 1920,
+      "height": 1349,
+      "originalWidth": 2488,
+      "originalHeight": 1748
+    },
+    {
+      "file": "sectiontwo-right-under.webp",
+      "before": 683434,
+      "after": 573664,
+      "width": 1788,
+      "height": 1920,
+      "originalWidth": 4024,
+      "originalHeight": 4320
+    },
+    {
+      "file": "sectiontwo-right.webp",
+      "before": 199328,
+      "after": 161280,
+      "width": 1788,
+      "height": 1920,
+      "originalWidth": 4024,
+      "originalHeight": 4320
+    },
+    {
+      "file": "sectiontwosub.webp",
+      "before": 544686,
+      "after": 225724,
+      "width": 1920,
+      "height": 1172,
+      "originalWidth": 7548,
+      "originalHeight": 4608
+    },
+    {
+      "file": "service-1-hero.webp",
+      "before": 1024272,
+      "after": 186412,
+      "width": 1536,
+      "height": 1920,
+      "originalWidth": 7792,
+      "originalHeight": 9740
+    },
+    {
+      "file": "servicehero.webp",
+      "before": 391994,
+      "after": 199196,
+      "width": 1920,
+      "height": 1067,
+      "originalWidth": 5760,
+      "originalHeight": 3200
+    },
+    {
+      "file": "servicehero1.webp",
+      "before": 44220,
+      "after": 9586,
+      "width": 1920,
+      "height": 1063,
+      "originalWidth": 5760,
+      "originalHeight": 3189
+    },
+    {
+      "file": "services.webp",
+      "before": 10984,
+      "after": 11328,
+      "width": 1071,
+      "height": 1920,
+      "originalWidth": 1500,
+      "originalHeight": 2688
+    },
+    {
+      "file": "sliderimage2.webp",
+      "before": 75308,
+      "after": 99132,
+      "width": 1920,
+      "height": 1081,
+      "originalWidth": 2352,
+      "originalHeight": 1324
+    },
+    {
+      "file": "team-photo-mobile.webp",
+      "before": 33154,
+      "after": 50040,
+      "width": 1071,
+      "height": 1920,
+      "originalWidth": 1500,
+      "originalHeight": 2688
+    },
+    {
+      "file": "team-photo.webp",
+      "before": 156400,
+      "after": 84264,
+      "width": 1920,
+      "height": 1067,
+      "originalWidth": 5760,
+      "originalHeight": 3200
+    },
+    {
+      "file": "terrace-bg-mobile.webp",
+      "before": 408766,
+      "after": 251100,
+      "width": 887,
+      "height": 1920,
+      "originalWidth": 1560,
+      "originalHeight": 3376
+    },
+    {
+      "file": "terrace2-bg-mobile.webp",
+      "before": 438578,
+      "after": 218604,
+      "width": 887,
+      "height": 1920,
+      "originalWidth": 1560,
+      "originalHeight": 3376
+    },
+    {
+      "file": "the-corner-toorak.webp",
+      "before": 376402,
+      "after": 306824,
+      "width": 1440,
+      "height": 1920,
+      "originalWidth": 3024,
+      "originalHeight": 4032
+    },
+    {
+      "file": "toorak1.webp",
+      "before": 464734,
+      "after": 255974,
+      "width": 1920,
+      "height": 1280,
+      "originalWidth": 6000,
+      "originalHeight": 4000
+    },
+    {
+      "file": "toorak2.webp",
+      "before": 254484,
+      "after": 241868,
+      "width": 1920,
+      "height": 1280,
+      "originalWidth": 6000,
+      "originalHeight": 4000
+    },
+    {
+      "file": "toorak3.webp",
+      "before": 296926,
+      "after": 190588,
+      "width": 1920,
+      "height": 1280,
+      "originalWidth": 6000,
+      "originalHeight": 4000
+    },
+    {
+      "file": "toorak4.webp",
+      "before": 374280,
+      "after": 218880,
+      "width": 1920,
+      "height": 1280,
+      "originalWidth": 6000,
+      "originalHeight": 4000
+    },
+    {
+      "file": "toorak5.webp",
+      "before": 338194,
+      "after": 149466,
+      "width": 1920,
+      "height": 1080,
+      "originalWidth": 8064,
+      "originalHeight": 4536
+    },
+    {
+      "file": "toorak6.webp",
+      "before": 515906,
+      "after": 281190,
+      "width": 1920,
+      "height": 1080,
+      "originalWidth": 8064,
+      "originalHeight": 4536
+    },
+    {
+      "file": "toorak7.webp",
+      "before": 401760,
+      "after": 360740,
+      "width": 1920,
+      "height": 1280,
+      "originalWidth": 6000,
+      "originalHeight": 4000
+    },
+    {
+      "file": "toorakhero.webp",
+      "before": 797554,
+      "after": 295164,
+      "width": 1920,
+      "height": 1080,
+      "originalWidth": 8064,
+      "originalHeight": 4536
+    }
+  ],
+  "mobileBytes": 1343540
+}

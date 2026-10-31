@@ -1,0 +1,21 @@
+{
+  "name": "Grand Pools",
+  "short_name": "Grand Pools",
+  "description": "Custom swimming pool builders in Melbourne.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#162D24",
+  "theme_color": "#162D24",
+  "icons": [
+    {
+      "src": "/icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
