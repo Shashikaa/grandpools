@@ -65,7 +65,7 @@ Whether you’re renovating an existing pool or creating something new, our team
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20 z-[1]" />
 
           {!hideText && (
-            <div className="section-container relative z-10 h-full flex flex-col justify-end !pb-24 lg:!pb-42">
+            <div data-mobile-hero-bottom className="section-container relative z-10 h-full flex flex-col justify-end !pb-24 lg:!pb-42">
               <div className="hero-text-wrap flex flex-col !gap-4 lg:!gap-8 leading-normal will-change-[opacity,transform]">
                 <h1
                   className="hero-title hero-text-target hero-title-target text-[#F4EEDF] !font-[100]"

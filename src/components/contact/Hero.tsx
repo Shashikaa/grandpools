@@ -37,7 +37,7 @@ export default function ContactHero({
 
       {/* Hero Content */}
       {!hideText && (
-        <div className="section-container relative z-10 w-full pb-16 pt-32">
+        <div data-mobile-hero-bottom className="section-container relative z-10 w-full pb-16 pt-32">
           <div className="flex flex-col gap-4 lg:gap-8 leading-normal">
             <h1
               className="hero-text-target hero-title-target text-[#F4EEDF] font-[100]"

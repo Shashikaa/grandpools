@@ -116,11 +116,10 @@ test('normal app continuation follows the story with no extra sticky handoff', (
   }
 });
 
-test('Home hero follows the same scroll budget as the Projects editorial hero', () => {
-  for (const mobile of [false,true]) {
-    assert.equal(pinsStory('home-hero',mobile),true);
-    assert.equal(storyDistance('home-hero',mobile,2),storyDistance('editorial-hero',mobile,2));
-  }
+test('Home hero keeps desktop story but reserves no mobile inner animation', () => {
+ assert.equal(pinsStory('home-hero',true),false);
+ assert.equal(storyDistance('home-hero',true,2),0);
+ assert.equal(storyDistance('home-hero',false,2),storyDistance('editorial-hero',false,2));
 });
 
  test('Quality incoming copy starts just beyond the viewport without an extra-screen gap', () => {

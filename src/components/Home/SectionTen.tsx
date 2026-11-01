@@ -108,7 +108,7 @@ export default function SectionTen() {
           
           .s10-scrollable-container {
             position: absolute;
-            top: 100svh;
+            top: var(--scene-viewport, 100svh);
             left: 20px;
             right: 20px;
             display: flex;
@@ -130,7 +130,7 @@ export default function SectionTen() {
           
           .s10-scrollable-container {
             position: absolute;
-            top: 100svh;
+            top: var(--scene-viewport, 100svh);
             left: 20px;
             right: 20px;
             display: flex;

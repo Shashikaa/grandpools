@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, lazy, Suspense } from "react";
 import { usePathname } from "next/navigation";
-import dynamic from "next/dynamic";
 import { prefersReducedMotion } from "@/src/lib/reducedMotion";
 
-const WaveCanvas = dynamic(() => import("./WaveCanvas"), { ssr: false, loading: () => null });
+// The import factory runs only when the desktop-only branch is rendered.
+const WaveCanvas = lazy(() => import("./WaveCanvas"));
 
 type LazyWaveCanvasProps = { imageSrc: string; preloaderDone?: boolean };
 
@@ -25,7 +25,10 @@ export default function LazyWaveCanvas({ imageSrc, preloaderDone }: LazyWaveCanv
       observer.disconnect();
     }, { rootMargin: "180px" });
     observer.observe(container);
-    return () => observer.disconnect();
+    const desktopMedia = matchMedia("(min-width:1025px) and (pointer:fine)");
+    const stopOnMobile = () => { if (!desktopMedia.matches) { setShouldRender(false); observer.disconnect(); } };
+    desktopMedia.addEventListener("change", stopOnMobile);
+    return () => { observer.disconnect(); desktopMedia.removeEventListener("change", stopOnMobile); };
   }, [pathname, preloaderDone]);
 
   return (
@@ -33,7 +36,7 @@ export default function LazyWaveCanvas({ imageSrc, preloaderDone }: LazyWaveCanv
       <img src={imageSrc} alt="" aria-hidden="true"
         className="absolute inset-0 w-full h-full object-cover pointer-events-none" />
       {shouldRender && <div className="absolute inset-0">
-        <WaveCanvas imageSrc={imageSrc} preloaderDone={preloaderDone} />
+        <Suspense fallback={null}><WaveCanvas imageSrc={imageSrc} preloaderDone={preloaderDone} /></Suspense>
       </div>}
     </div>
   );

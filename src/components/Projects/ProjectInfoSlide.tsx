@@ -39,13 +39,13 @@ export default function ProjectInfoSlide({ slides, activeIndex = 0, isActive = t
   if (!active) return null;
   return <div ref={root} className="absolute inset-0 w-full h-full overflow-hidden bg-[#131313] project-info-master">
     <div className="w-full h-full flex flex-col lg:grid lg:grid-cols-2">
-      <div className="relative w-full h-[50svh] lg:h-full order-1 lg:order-2 bg-[#EFECE6] !p-6 md:!p-16 lg:!p-20 flex flex-col justify-center z-[60] text-[#131313]">
+      <div className="project-info-half relative w-full h-[50svh] lg:h-full order-1 lg:order-2 bg-[#EFECE6] !p-6 md:!p-16 lg:!p-20 flex flex-col justify-center z-[60] text-[#131313]">
         <div ref={text} key={index} className="info-text-block relative flex flex-col justify-center gap-3 md:gap-8">
           <h2 className="info-anim-item text-[#242A27] font-display text-2xl sm:text-3xl md:text-5xl font-light leading-tight">{active.title}</h2>
           <div className="info-anim-item max-w-md pt-1 md:pt-0 pb-0 md:pb-12"><p className="text-xs sm:text-sm md:text-base leading-relaxed text-[#242A27] font-normal">{active.description}</p></div>
         </div>
       </div>
-      <div className="relative w-full h-[50svh] lg:h-full order-2 lg:order-1 overflow-hidden bg-[#1e1e1e]">
+      <div className="project-info-half relative w-full h-[50svh] lg:h-full order-2 lg:order-1 overflow-hidden bg-[#1e1e1e]">
         {slides.map((slide, i) => <div key={i} className={`info-img-layer info-img-layer-${i} absolute inset-0 w-full h-full overflow-hidden`} style={{ zIndex: i + 10, clipPath: i === 0 ? 'inset(0% 0% 0% 0%)' : 'inset(100% 0% 0% 0%)' }}>
           <div className="info-image-inner w-full h-full"><div data-scene-bg className="responsive-background w-full h-full bg-cover bg-center" style={responsiveBackground(slide.image)}/></div>
         </div>)}

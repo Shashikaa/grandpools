@@ -876,3 +876,15 @@ button.btn-underline:hover::after,
  .luxury-page .luxury-expert-panel { height:var(--scene-viewport); }
  .luxury-page .luxury-app-panel { min-height:var(--scene-viewport); }
 }
+
+/* Mobile content-only screens and split project stories fill the same frame. */
+@media (max-width:1024px) {
+ .luxury-page .project-explore,
+ .luxury-page .s3-mobile-section,
+ .luxury-page .s2-desktop-section { min-height:var(--scene-viewport,100lvh); }
+ .luxury-page .project-info-master > div { height:var(--scene-viewport,100lvh); }
+ .luxury-page .project-info-half { height:50%; min-height:0; flex-shrink:0; }
+ [data-mobile-hero-bottom] { padding-bottom:max(112px,calc(100lvh - 100svh + env(safe-area-inset-bottom,0px) + 32px)) !important; }
+ .luxury-page [data-luxury-stage="home-hero"] .hero-left-initial { opacity:1; visibility:visible; transform:none; }
+ .luxury-page [data-luxury-stage="home-hero"] :is(.hero-right-text-wrap,.hero-secondary-text-wrap) { opacity:0 !important; visibility:hidden !important; }
+}

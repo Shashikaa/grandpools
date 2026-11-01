@@ -52,7 +52,7 @@ export default function ProjectsHero({
           {!hideText && (
             <>
               {/* Bottom Left-Aligned Initial Title & Subtitle */}
-              <div className="hero-text-wrap section-container absolute inset-0 z-10 h-full flex flex-col justify-end pb-12 md:pb-16 lg:pb-22 pl-6 md:pl-12 lg:pl-20 will-change-[opacity,transform]">
+              <div data-mobile-hero-bottom className="hero-text-wrap section-container absolute inset-0 z-10 h-full flex flex-col justify-end pb-12 md:pb-16 lg:pb-22 pl-6 md:pl-12 lg:pl-20 will-change-[opacity,transform]">
                 <div className="flex flex-col !gap-4 lg:!gap-8">
                   <h1
                     className="hero-title hero-text-target hero-title-target text-[#F4EEDF] font-[100]"

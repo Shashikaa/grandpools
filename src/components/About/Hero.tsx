@@ -37,7 +37,7 @@ export default function Hero({ isMobile = false }: HeroProps) {
 
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20 z-[2]" />
 
-        <div className="about-hero-text-wrap section-container relative z-10 h-full flex flex-col justify-end !pb-22 w-full pointer-events-auto">
+        <div data-mobile-hero-bottom className="about-hero-text-wrap section-container relative z-10 h-full flex flex-col justify-end !pb-22 w-full pointer-events-auto">
           <div className="flex flex-col !gap-4 lg:!gap-8 leading-normal">
             {/* The only real H1 */}
             <h1
@@ -80,7 +80,7 @@ export default function Hero({ isMobile = false }: HeroProps) {
 
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20 z-[2]" />
 
-          <div className="about-hero-text-wrap section-container relative z-10 h-full flex flex-col justify-end !pb-22 w-full pointer-events-auto">
+          <div data-mobile-hero-bottom className="about-hero-text-wrap section-container relative z-10 h-full flex flex-col justify-end !pb-22 w-full pointer-events-auto">
             <div className="flex flex-col !gap-4 lg:!gap-8 leading-normal">
               {/* Visual copy—not another heading */}
               <div

@@ -13,7 +13,7 @@ export default function ProjectScrollHero({
   images,
 }: ProjectScrollHeroProps) {
   return (
-    <div className="absolute inset-0 w-full h-full overflow-hidden bg-[#131313] p-8 md:p-16 flex items-end project-hero-master section-container">
+    <div data-mobile-hero-bottom className="absolute inset-0 w-full h-full overflow-hidden bg-[#131313] p-8 md:p-16 flex items-end project-hero-master section-container">
       {/* Dynamic Stacking of Passed Images */}
       {images.map((src, index) => (
         <div

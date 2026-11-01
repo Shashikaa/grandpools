@@ -111,7 +111,7 @@ export default function SubServiceHero({ data, hideText = false }: HeroProps) {
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20 z-[1]" />
 
           {!hideText && (
-            <div className="hero-text-wrap section-container relative z-10 h-full flex flex-col justify-end pb-20 md:pb-22 pointer-events-auto will-change-[opacity,transform]">
+            <div data-mobile-hero-bottom className="hero-text-wrap section-container relative z-10 h-full flex flex-col justify-end pb-20 md:pb-22 pointer-events-auto will-change-[opacity,transform]">
               <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 leading-normal w-full">
                 {/* Title and Subtitle Block */}
                 <div className="flex flex-col gap-2 lg:gap-6">

@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function SectionOne() {
   return (
-    <section className="w-full min-h-[100svh] h-auto md:h-auto bg-[#F4EEDF] py-12 md:py-32 lg:py-48 px-6 md:px-12 lg:px-20 text-[#111] flex items-center">
+    <section className="project-explore w-full min-h-[100svh] h-auto md:h-auto bg-[#F4EEDF] py-12 md:py-32 lg:py-48 px-6 md:px-12 lg:px-20 text-[#111] flex items-center">
       <div className="w-full h-full md:h-auto flex flex-col justify-start items-stretch section-container">
         
         {/* Row 1: Right-Aligned Title */}

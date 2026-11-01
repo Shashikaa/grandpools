@@ -16,13 +16,13 @@ export function storyDistance(kind: string, mobile: boolean, steps: number) {
   if (kind === 'harmony') return 0;
   if (kind === 'process') return mobile ? 3 : 3.4;
   if (kind === 'service-story') return 4.6;
-  if (kind === 'home-hero') return mobile ? 1.25 : 1.6;
+  if (kind === 'home-hero') return mobile ? 0 : 1.6;
   if (kind === 'quality') return mobile ? 1.6 : 2;
   if (kind === 'sequence') return Math.max(1, steps - 1) * (mobile ? 0.9 : 1.05);
   return mobile ? 1.25 : 1.6;
 }
 export function pinsStory(kind: string, mobile: boolean) {
-  return kind !== 'standard' && kind !== 'harmony' && !(mobile && ['contact-story','invitation','harmony'].includes(kind));
+  return kind !== 'standard' && kind !== 'harmony' && !(mobile && ['home-hero','contact-story','invitation','harmony'].includes(kind));
 }
 
 /** Open the scene before finishing its line reveals; all values are entry progress. */

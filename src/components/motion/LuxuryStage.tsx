@@ -114,6 +114,10 @@ export default function LuxuryStage({ children, kind = "standard", flow = false,
         // Prose travelling through the viewport stays fully readable: no line masks
         // or delayed intersection reveals on Process and service story tracks.
         scope.dataset.textMotion = mobile ? 'static' : 'desktop';
+        if (mobile && kind === 'home-hero') {
+          gsap.set(q('.hero-left-initial'), {autoAlpha:1, clearProps:'transform'});
+          gsap.set(q('.hero-right-text-wrap,.hero-secondary-text-wrap'), {autoAlpha:0});
+        }
         const next = scope.nextElementSibling as HTMLElement | null;
         const hasNext = (next?.hasAttribute('data-luxury-stage') ?? false) && next?.dataset.transition !== 'flow';
         const story = pinsStory(kind, mobile) ? storyDistance(kind, mobile, steps) : 0;
@@ -224,7 +228,14 @@ export default function LuxuryStage({ children, kind = "standard", flow = false,
           } else if (kind === "quality") {
             gsap.set(q('.s10-content-wrap'), { autoAlpha: 1 });
             to('.s10-title,.s10-title-sub,.s10-para-top', { y: () => -viewportHeight() * (mobile ? 0.65 : 1), ...(mobile ? { autoAlpha: 0 } : {}), duration: 1.2, ease: 'none' }, 0);
-            fromTo(mobile ? '.s10-scrollable-container' : '.s10-content-wrap', { y: () => mobile ? 0 : qualityEntryOffset(viewportHeight(), q('.s10-content-wrap')[0]?.offsetTop ?? 0) }, { y: mobile ? -viewportHeight() * 0.78 : 0, duration: mobile ? 1.8 : 1.5, ease: 'none' }, mobile ? 0 : 0.12);
+            fromTo(mobile ? '.s10-scrollable-container' : '.s10-content-wrap', { y: () => mobile ? 0 : qualityEntryOffset(viewportHeight(), q('.s10-content-wrap')[0]?.offsetTop ?? 0) }, { y: () => {
+              if (!mobile) return 0;
+              const track = q('.s10-scrollable-container')[0];
+              const copy = q('.s10-content-wrap')[0];
+              const restingTop = track?.offsetTop ?? viewportHeight();
+              const centeredTop = Math.max(110, (viewportHeight() - (copy?.offsetHeight ?? 0)) / 2);
+              return -Math.max(0, restingTop - centeredTop);
+            }, duration: mobile ? 1.8 : 1.5, ease: 'none' }, mobile ? 0 : 0.12);
             to('.s10-bg-img', { scale: 1.18, yPercent: -7, duration: 1.8, ease: 'none' }, 0);
           } else if (kind === "service-hero") {
             to('.hero-text-wrap,.hero-btn', { autoAlpha: 0, y: -30, duration: 0.55 }, 0.05);
