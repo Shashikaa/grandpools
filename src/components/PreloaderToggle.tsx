@@ -14,7 +14,8 @@ export default function PreloaderToggle() {
   const pathname = usePathname();
   const { setPreloaderDone, markBrandPreloaderSeen, smootherRef } = useSite();
 
-  const [mounted, setMounted] = useState(false);
+  const brandRunning = useRef(false);
+  const brandPresented = useRef(false);
   const [loaderType, setLoaderType] = useState<"brand" | "fade" | "none">("none");
 
   const isPopStateNav = useRef(false);
@@ -56,6 +57,7 @@ export default function PreloaderToggle() {
         currentPath === "/privacy-policy" ||
         currentPath === "/not-found"
       ) {
+        brandRunning.current = false;
         setLoaderType("none");
         document.documentElement.classList.remove(
           "show-brand-preloader",
@@ -67,9 +69,13 @@ export default function PreloaderToggle() {
         return;
       }
 
-      const isSeen = sessionStorage.getItem("hasSeenBrandPreloader") === "true";
+      let isSeen = brandPresented.current;
+      try { isSeen ||= sessionStorage.getItem("hasSeenBrandPreloader") === "true"; } catch {}
 
-      if (currentPath === "/" && !isSeen && !isPopStateNav.current) {
+      if (currentPath === "/" && (!isSeen || brandRunning.current) && !isPopStateNav.current) {
+        brandRunning.current = true;
+        brandPresented.current = true;
+        try { sessionStorage.setItem("hasSeenBrandPreloader", "true"); } catch {}
         setPreloaderDone(false);
         setLoaderType("brand");
         document.documentElement.classList.add("show-brand-preloader", "preloading");
@@ -77,6 +83,7 @@ export default function PreloaderToggle() {
         return;
       }
 
+      brandRunning.current = false;
       setPreloaderDone(false);
       setLoaderType("fade");
       document.documentElement.classList.add("show-fade-preloader", "preloading");
@@ -97,13 +104,13 @@ export default function PreloaderToggle() {
   }, [handleRouteLoader]);
 
   useIsomorphicLayoutEffect(() => {
-    setMounted(true);
     handleRouteLoader(pathname);
   }, [pathname, handleRouteLoader]);
 
   const handleBrandComplete = useCallback(() => {
+    brandRunning.current = false;
     markBrandPreloaderSeen();
-    sessionStorage.setItem("hasSeenBrandPreloader", "true");
+    try { sessionStorage.setItem("hasSeenBrandPreloader", "true"); } catch {}
 
     forceScrollTop();
 
@@ -148,13 +155,13 @@ export default function PreloaderToggle() {
   return (
     <>
       <div id="brand-preloader-root">
-        {(!mounted || loaderType === "brand") && (
+        {(loaderType === "brand") && (
           <Preloader key="brand-preloader" onComplete={handleBrandComplete} />
         )}
       </div>
 
       <div id="fade-preloader-root">
-        {(!mounted || loaderType === "fade") && (
+        {(loaderType === "fade") && (
           <FadePreloader
             key={`fade-loader-${pathname}`}
             onExitStart={handleFadeExitStart}

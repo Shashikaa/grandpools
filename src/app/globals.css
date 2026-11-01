@@ -888,3 +888,8 @@ button.btn-underline:hover::after,
  .luxury-page [data-luxury-stage="home-hero"] .hero-left-initial { opacity:1; visibility:visible; transform:none; }
  .luxury-page [data-luxury-stage="home-hero"] :is(.hero-right-text-wrap,.hero-secondary-text-wrap) { opacity:0 !important; visibility:hidden !important; }
 }
+
+/* Short Android swipes must advance the page, not an invisible underlay scrollbox. */
+@media(max-width:1024px) {
+ .subservice-hero-underlay { overflow:visible; overscroll-behavior:auto; touch-action:pan-y; }
+}

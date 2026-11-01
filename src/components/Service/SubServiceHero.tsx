@@ -32,7 +32,7 @@ export default function SubServiceHero({ data, hideText = false }: HeroProps) {
   return (
     <div className="relative w-full h-full bg-[#0F2828]">
       {/* UNDERNEATH LAYER: Stationary multi-tab interaction stack */}
-      <div className="subservice-hero-underlay absolute section-container inset-0 w-full h-full flex flex-col justify-between p-6 md:p-12 lg:p-16 z-0 text-[#F4EEDF] pointer-events-auto overflow-y-auto">
+      <div className="subservice-hero-underlay absolute section-container inset-0 w-full h-full flex flex-col justify-between p-6 md:p-12 lg:p-16 z-0 text-[#F4EEDF] pointer-events-auto overflow-visible lg:overflow-y-auto">
         <div data-mobile-hero-copy className="subservice-hero-tabs flex flex-col gap-3 text-left lg:absolute lg:top-32 lg:right-16 lg:w-[450px] !mt-10">
           {data.tabs.map((tab, idx) => (
             <button
