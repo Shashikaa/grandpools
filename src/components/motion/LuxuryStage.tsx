@@ -240,7 +240,7 @@ export default function LuxuryStage({ children, kind = "standard", flow = false,
           } else if (kind === "service-hero") {
             to('.hero-text-wrap,.hero-btn', { autoAlpha: 0, y: -30, duration: 0.55 }, 0.05);
             to('.services-hero-top-layer', { clipPath: () => {
-              if (!mobile) return 'inset(0% 57.5% 0% 0%)';
+              if (!mobile) return 'inset(0% 46.5% 0% 0%)';
               const boxes = q('[data-mobile-hero-copy]').map(el => el.getBoundingClientRect().top - surface.getBoundingClientRect().top);
               const textTop = boxes.length ? Math.min(...boxes) : viewportHeight() * 0.4;
               const crop = Math.max(35, Math.min(75, 100 - (textTop - 20) / viewportHeight() * 100));
