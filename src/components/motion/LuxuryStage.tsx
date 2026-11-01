@@ -4,6 +4,7 @@ import { useLayoutEffect, useRef, useSyncExternalStore, type ReactNode } from "r
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CustomEase } from "gsap/CustomEase";
+import { stableSceneHeight } from "./viewport";
 import { refreshMotionLayout } from "./refresh";
 import { SplitText } from "gsap/SplitText";
 import { storyDistance, pinsStory, maskRevealEnd, entryTextAt, sceneLayout, processTiming, qualityEntryOffset } from "./settings";
@@ -38,6 +39,8 @@ export default function LuxuryStage({ children, kind = "standard", flow = false,
   useLayoutEffect(() => {
     const scope = root.current;
     if (!scope || !preloaderDone) return;
+    const mobileHeight = mobile ? stableSceneHeight() : 0;
+    const viewportHeight = () => mobile ? mobileHeight : window.innerHeight;
     let disposed = false;
     let context: gsap.Context | undefined;
     const splits: SplitText[] = [];
@@ -116,7 +119,7 @@ export default function LuxuryStage({ children, kind = "standard", flow = false,
         const measure = () => {
           if (!pinned) return false;
           const height = view.offsetHeight;
-          const geometry = sceneLayout(innerHeight, height, story, handoff);
+          const geometry = sceneLayout(viewportHeight(), height, story, handoff);
           const total = geometry.height;
           const changed = Math.abs(scope.offsetHeight - total) > 1;
           scope.style.height = `${total}px`;
@@ -136,7 +139,7 @@ export default function LuxuryStage({ children, kind = "standard", flow = false,
           // The outer view remains CSS-sticky throughout; no fixed-pin state swap.
           const copyCues: { split: SplitText; at: number }[] = [];
           const enter = gsap.timeline({ scrollTrigger: {
-            trigger: scope, start: 'top bottom', end: 'top top', scrub: true,
+            trigger: scope, start: () => `top ${viewportHeight()}px`, end: 'top top', scrub: true,
             invalidateOnRefresh: true,
             onUpdate: self => {
               scope.dataset.entryProgress = self.progress.toFixed(3);
@@ -144,10 +147,10 @@ export default function LuxuryStage({ children, kind = "standard", flow = false,
             },
           } });
           if (transition === 'slide' || transition === 'flow') enter.to({}, { duration: 1 }, 0);
-          else enter.fromTo(curtain, { y: () => -innerHeight }, { y: 0, force3D: true, duration: 1, ease: 'none' }, 0);
+          else enter.fromTo(curtain, { y: () => -viewportHeight() }, { y: 0, force3D: true, duration: 1, ease: 'none' }, 0);
           if (!splitEntry && transition !== 'slide' && transition !== 'flow') {
             const closedMask = () => transition === 'curtain'
-              ? 'inset(0px 100% 0px 0px)' : `inset(${innerHeight}px 0px 0px 0px)`;
+              ? 'inset(0px 100% 0px 0px)' : `inset(${viewportHeight()}px 0px 0px 0px)`;
             enter.fromTo(curtain, { clipPath: closedMask }, { clipPath: 'inset(0px 0px 0px 0px)', duration: maskRevealEnd, ease: 'none' }, 0);
           }
           if (kind === 'harmony') {
@@ -157,15 +160,15 @@ export default function LuxuryStage({ children, kind = "standard", flow = false,
           initialSplits.forEach(split => {
             const element = split.elements[0] as HTMLElement;
             const localTop = element.getBoundingClientRect().top - curtain.getBoundingClientRect().top;
-            if (flow && localTop >= innerHeight * 0.95) {
-              ScrollTrigger.create({ trigger: scope, start: () => `top ${innerHeight * 0.88 - localTop}px`,
+            if (flow && localTop >= viewportHeight() * 0.95) {
+              ScrollTrigger.create({ trigger: scope, start: () => `top ${viewportHeight() * 0.88 - localTop}px`,
                 once: true, onEnter: () => playCopy(split),
                 onRefresh: self => { if (self.progress > 0) playCopy(split); },
               });
               return;
             }
             entryCopy.push(split);
-            const at = ['slide','flow'].includes(transition) ? Math.min(0.88, Math.max(0.12, localTop / innerHeight + 0.12)) : transition === 'wipe' ? Math.min(0.88, entryTextAt(localTop, innerHeight) + 0.06) : 0.72;
+            const at = ['slide','flow'].includes(transition) ? Math.min(0.88, Math.max(0.12, localTop / viewportHeight() + 0.12)) : transition === 'wipe' ? Math.min(0.88, entryTextAt(localTop, viewportHeight()) + 0.06) : 0.72;
             copyCues.push({ split, at });
           });
           ScrollTrigger.create({ trigger: scope, start: 'top top',
@@ -213,20 +216,20 @@ export default function LuxuryStage({ children, kind = "standard", flow = false,
               fromTo('.s2-right-img-frame-final', { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: t.secondSwapDuration, ease: 'power1.inOut' }, t.secondSwapStart);
             }
             const column = mobile ? '.s2-mob-scroll-wrapper' : '.s2-scroll-content';
-            fromTo(column, { opacity: 1, y: innerHeight * 1.05 }, { y: () => -Math.max(0, (q(column)[0]?.scrollHeight ?? 0) - innerHeight * 0.55), duration: t.textDuration, ease: 'none' }, mobile ? 0.95 : t.innerStart);
+            fromTo(column, { opacity: 1, y: viewportHeight() * 1.05 }, { y: () => -Math.max(0, (q(column)[0]?.scrollHeight ?? 0) - viewportHeight() * 0.55), duration: t.textDuration, ease: 'none' }, mobile ? 0.95 : t.innerStart);
             if (mobile) [1,2,3].forEach(i => fromTo(`.s2-mob-clip-bg-${i}`, { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.3, ease: 'power1.inOut' }, 0.6 + i * 0.95));
           } else if (kind === "quality") {
             gsap.set(q('.s10-content-wrap'), { autoAlpha: 1 });
-            to('.s10-title,.s10-title-sub,.s10-para-top', { y: () => -innerHeight * (mobile ? 0.65 : 1), ...(mobile ? { autoAlpha: 0 } : {}), duration: 1.2, ease: 'none' }, 0);
-            fromTo(mobile ? '.s10-scrollable-container' : '.s10-content-wrap', { y: () => mobile ? 0 : qualityEntryOffset(innerHeight, q('.s10-content-wrap')[0]?.offsetTop ?? 0) }, { y: mobile ? -innerHeight * 0.78 : 0, duration: mobile ? 1.8 : 1.5, ease: 'none' }, mobile ? 0 : 0.12);
+            to('.s10-title,.s10-title-sub,.s10-para-top', { y: () => -viewportHeight() * (mobile ? 0.65 : 1), ...(mobile ? { autoAlpha: 0 } : {}), duration: 1.2, ease: 'none' }, 0);
+            fromTo(mobile ? '.s10-scrollable-container' : '.s10-content-wrap', { y: () => mobile ? 0 : qualityEntryOffset(viewportHeight(), q('.s10-content-wrap')[0]?.offsetTop ?? 0) }, { y: mobile ? -viewportHeight() * 0.78 : 0, duration: mobile ? 1.8 : 1.5, ease: 'none' }, mobile ? 0 : 0.12);
             to('.s10-bg-img', { scale: 1.18, yPercent: -7, duration: 1.8, ease: 'none' }, 0);
           } else if (kind === "service-hero") {
             to('.hero-text-wrap,.hero-btn', { autoAlpha: 0, y: -30, duration: 0.55 }, 0.05);
             to('.services-hero-top-layer', { clipPath: () => {
               if (!mobile) return 'inset(0% 57.5% 0% 0%)';
               const boxes = q('[data-mobile-hero-copy]').map(el => el.getBoundingClientRect().top - surface.getBoundingClientRect().top);
-              const textTop = boxes.length ? Math.min(...boxes) : innerHeight * 0.4;
-              const crop = Math.max(35, Math.min(75, 100 - (textTop - 20) / innerHeight * 100));
+              const textTop = boxes.length ? Math.min(...boxes) : viewportHeight() * 0.4;
+              const crop = Math.max(35, Math.min(75, 100 - (textTop - 20) / viewportHeight() * 100));
               return `inset(0% 0% ${crop}% 0%)`;
             }, duration: 1.6, ease: 'power1.inOut' }, 0.05);
 
@@ -236,7 +239,7 @@ export default function LuxuryStage({ children, kind = "standard", flow = false,
             fromTo('.s10-img-inner-wrap', { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.7, ease: 'power2.inOut' }, 0.05);
             to('.s10-img-inner-wrap', { right: 0, bottom: 0, width: '100%', height: '100%', duration: 1.35, ease: 'power2.inOut' }, 0.65);
             to('.s10-img-element', { scale: 1.15, duration: 1.35, ease: 'power2.inOut' }, 0.65);
-            fromTo('.s10-seq-container', { y: 0 }, { y: () => -(q('.s10-seq-container')[0]?.scrollHeight ?? innerHeight * 2) - innerHeight * 0.25, duration: 3, ease: 'none' }, 2);
+            fromTo('.s10-seq-container', { y: 0 }, { y: () => -(q('.s10-seq-container')[0]?.scrollHeight ?? viewportHeight() * 2) - viewportHeight() * 0.25, duration: 3, ease: 'none' }, 2);
             to('.s10-img-element', { yPercent: -12, duration: 3, ease: 'none' }, 2);
           } else if (kind === "editorial-hero") {
             gsap.set(q('.scroll-para-1,.scroll-para-2'), { autoAlpha: 0 });
@@ -276,7 +279,7 @@ export default function LuxuryStage({ children, kind = "standard", flow = false,
   
 
           } else if (kind === "contact-story") {
-            to('.contact-right-scroll-track', { y: () => mobile ? 0 : -Math.max(0, (q('.contact-right-scroll-track')[0]?.scrollHeight ?? innerHeight) - innerHeight * 0.65), duration: 1.8, ease: "none" }, 0.2);
+            to('.contact-right-scroll-track', { y: () => mobile ? 0 : -Math.max(0, (q('.contact-right-scroll-track')[0]?.scrollHeight ?? viewportHeight()) - viewportHeight() * 0.65), duration: 1.8, ease: "none" }, 0.2);
           } else {
             to('.s5-bg', { yPercent: -20, duration: 1, ease: 'none' }, 0);
             if (!timeline.duration()) timeline.to({}, { duration: 1 });
@@ -295,7 +298,7 @@ export default function LuxuryStage({ children, kind = "standard", flow = false,
         }
         let storyTrigger: ScrollTrigger | undefined;
         if (pinned) {
-          const st = ScrollTrigger.create({ trigger: scope, animation: timeline, start: () => `top ${Math.min(0, innerHeight - view.offsetHeight)}px`, end: () => `+=${innerHeight * (story + handoff)}`, scrub: true, invalidateOnRefresh: true, onRefreshInit: measure });
+          const st = ScrollTrigger.create({ trigger: scope, animation: timeline, start: () => `top ${Math.min(0, viewportHeight() - view.offsetHeight)}px`, end: () => `+=${viewportHeight() * (story + handoff)}`, scrub: true, invalidateOnRefresh: true, onRefreshInit: measure });
           storyTrigger = st;
           const fraction = story / (story + handoff);
           scope.dataset.storyFraction = String(fraction);
@@ -313,20 +316,20 @@ export default function LuxuryStage({ children, kind = "standard", flow = false,
           });
           callbacks.current.onReady?.(st);
         }
-        ScrollTrigger.create({ trigger: scope, start: 'top 40%', end: () => storyTrigger ? storyTrigger.end + innerHeight : 'bottom top', onToggle: self => callbacks.current.onActive?.(self.isActive), onRefresh: self => callbacks.current.onActive?.(self.isActive) });
+        ScrollTrigger.create({ trigger: scope, start: () => `top ${viewportHeight() * 0.4}px`, end: () => storyTrigger ? storyTrigger.end + viewportHeight() : 'bottom top', onToggle: self => callbacks.current.onActive?.(self.isActive), onRefresh: self => callbacks.current.onActive?.(self.isActive) });
         if (kind === 'invitation' && !mobile) {
-          gsap.fromTo(q('.s9-left-side'), { yPercent: 100 }, { yPercent: 0, ease: 'none', scrollTrigger: { trigger: scope, start:'top bottom', end:'top top', scrub:true } });
-          gsap.fromTo(q('.s9-right-side'), { yPercent: -100 }, { yPercent: 0, ease: 'none', scrollTrigger: { trigger: scope, start:'top bottom', end:'top top', scrub:true } });
+          gsap.fromTo(q('.s9-left-side'), { yPercent: 100 }, { yPercent: 0, ease: 'none', scrollTrigger: { trigger: scope, start: () => `top ${viewportHeight()}px`, end:'top top', scrub:true } });
+          gsap.fromTo(q('.s9-right-side'), { yPercent: -100 }, { yPercent: 0, ease: 'none', scrollTrigger: { trigger: scope, start: () => `top ${viewportHeight()}px`, end:'top top', scrub:true } });
         }
         const backgrounds = q('.s8-bg-img,.s10-bg-img,.s1-bg,.s3-bg,.s7-bg-img,.appsec-bg,.hero-bg-target').filter(el => !el.hasAttribute('data-scene-bg'));
         if (hasPrevious && kind === 'standard' && backgrounds.length) gsap.fromTo(backgrounds, { yPercent: -3, scale: 1.06 }, {
           yPercent: 3, scale: 1, ease: "none",
-          scrollTrigger: { trigger: scope, start: "top bottom", end: "bottom top", scrub: 1.1, invalidateOnRefresh: true },
+          scrollTrigger: { trigger: scope, start: () => `top ${viewportHeight()}px`, end: "bottom top", scrub: 1.1, invalidateOnRefresh: true },
         });
         // Animate a scoped variable, not the image transform. New carousel images
         // inherit the current zoom without restarting the scene or fighting wipes.
         if (hasPrevious && q('[data-scene-bg]').length) {
-          gsap.timeline({ scrollTrigger: { trigger: scope, start: 'top bottom', end: hasNext ? 'bottom bottom' : 'bottom top', scrub: true, invalidateOnRefresh: true } })
+          gsap.timeline({ scrollTrigger: { trigger: scope, start: () => `top ${viewportHeight()}px`, end: () => hasNext ? `bottom ${viewportHeight()}px` : 'bottom top', scrub: true, invalidateOnRefresh: true } })
             .fromTo(surface, { '--scene-image-zoom': 1.075 }, { '--scene-image-zoom': 1.015, duration: 0.65, ease: 'none' })
             .to(surface, { '--scene-image-zoom': 1.055, duration: 0.35, ease: 'none' });
         }

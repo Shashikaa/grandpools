@@ -30,7 +30,9 @@ export default function SmoothScroll({ children, onScrollReady }: SmoothScrollPr
   useLayoutEffect(() => {
     const previousRestoration = window.history.scrollRestoration;
     window.history.scrollRestoration = "manual";
-    if (prefersReducedMotion()) {
+    ScrollTrigger.config({ ignoreMobileResize: true });
+    // Native touch owns scrolling and Safari toolbar movement on phones/tablets.
+    if (prefersReducedMotion() || matchMedia("(max-width:1024px), (pointer:coarse)").matches) {
       readyCallback.current?.();
       return () => { window.history.scrollRestoration = previousRestoration; };
     }

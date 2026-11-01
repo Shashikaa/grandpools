@@ -135,3 +135,17 @@ test('Harmony zoom uses entry distance without a second story hold', () => {
     assert.equal(pinsStory('harmony',mobile),false);
   }
 });
+
+test('mobile scene measurement stays unchanged when browser toolbar height changes', () => {
+ const code=fs.readFileSync(new URL('../src/components/motion/viewport.ts',import.meta.url),'utf8');
+ const api={};
+ const window={innerHeight:680};
+ const probe={style:{},getBoundingClientRect:()=>({height:780}),remove(){}};
+ const document={createElement:()=>probe,documentElement:{appendChild(){}}};
+ vm.runInNewContext(ts.transpileModule(code,{compilerOptions:{module:ts.ModuleKind.CommonJS}}).outputText,{exports:api,window,document});
+ assert.equal(api.stableSceneHeight(),780);
+ window.innerHeight=780;
+ assert.equal(api.stableSceneHeight(),780);
+ window.innerHeight=450;
+ assert.equal(api.stableSceneHeight(),780);
+});

@@ -10,6 +10,7 @@ export default function CustomScrollBar() {
   const trackRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (matchMedia("(max-width:1024px)").matches) return;
     const instance = smootherRef?.current;
     const update = () => {
       const limit = instance?.limit ?? document.documentElement.scrollHeight - innerHeight;
@@ -85,7 +86,7 @@ export default function CustomScrollBar() {
       ref={trackRef}
       onPointerDown={handlePointerDown}
       /* Hidden on mobile, displayed on tablets/desktop (md and up) */
-      className=" fixed top-0 right-0 bottom-0 w-3 z-[9999] cursor-pointer select-none group touch-none"
+      className="hidden lg:block fixed top-0 right-0 bottom-0 w-3 z-[9999] cursor-pointer select-none group touch-none"
     >
       {/* Track background line */}
       <div className="absolute top-0 right-0 bottom-0 w-[1px] bg-white/15 group-hover:bg-white/30 transition-colors" />

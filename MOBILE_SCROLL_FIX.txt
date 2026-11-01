@@ -1,0 +1,17 @@
+Mobile scrolling fix for Grand Pools
+
+Based on Shashikaa/grandpools commit 4e7d7a3 (the latest source fetched for this update).
+
+Extract this ZIP into the project root and replace the matching files. Include the NEW src/components/motion/viewport.ts file. Then run npm run build and redeploy your existing Vercel project. No dependency changes are required.
+
+Changes:
+- Use a stable large viewport for mobile scene containers, overlaps, masks and story distances. Safari toolbar/keyboard height changes no longer change those distances.
+- Native scrolling on mobile/tablet instead of creating a Lenis controller there. Desktop wheel easing remains.
+- Hide the custom scrollbar on mobile and stop its scroll-driven React updates.
+- Avoid a separate body scroll container and disable browser scroll anchoring inside the animated scenes.
+
+Validation: production build passed and generated 21 routes. All 17 motion checks passed, including stable mobile viewport measurement under changing window.innerHeight. Phone-size browser checks (393x852) confirmed document scrolling, aligned 852px scenes/overlaps, hidden custom scrollbar, and menu open/close preserving scroll position.
+
+The test environment does not provide physical iPhone Safari. Its address bar will still expand/collapse normally; this patch targets the page movement and remeasurement caused by those changes. Recheck the same fast-scroll sequence on your iPhone after redeploying.
+
+This ZIP does not push to GitHub or deploy Vercel.

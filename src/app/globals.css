@@ -839,3 +839,15 @@ button.btn-underline:hover::after,
 @media (prefers-reduced-motion:reduce) {
  .button-roll-char { transition:none; transform:none !important; }
 }
+
+/* One stable viewport for mobile scene geometry and masks. */
+@media (max-width:1024px) {
+ .luxury-page { --scene-viewport:100lvh; overflow-anchor:none; }
+ .luxury-stage + .luxury-stage { margin-top:calc(-1 * var(--scene-viewport)); }
+ .luxury-stage[data-transition="flow"] { margin-top:0; }
+ .luxury-stage:not(.luxury-flow) > .luxury-stage-view { height:var(--scene-viewport); min-height:var(--scene-viewport); }
+ .luxury-stage:not(.luxury-flow) .luxury-stage-surface { min-height:var(--scene-viewport); }
+ html, body { min-height:100svh; }
+ body { overflow-x:clip; overflow-y:visible; }
+ .site-root { overflow-x:clip; }
+}
