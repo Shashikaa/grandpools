@@ -15,3 +15,5 @@ Validation: production build passed and generated 21 routes. All 17 motion check
 The test environment does not provide physical iPhone Safari. Its address bar will still expand/collapse normally; this patch targets the page movement and remeasurement caused by those changes. Recheck the same fast-scroll sequence on your iPhone after redeploying.
 
 This ZIP does not push to GitHub or deploy Vercel.
+
+Second iOS pass (2026-11-01): mobile section entrances now slide naturally above the outgoing section. Whole-scene counter-translation and mask clipping are disabled on mobile to avoid competing with asynchronous iOS touch scrolling. Desktop masks and inner stories are retained. Production build and all 17 checks pass; phone-width browser inspection confirms mobile scene wrappers have no transform or mask. Real-device iPhone validation remains required.

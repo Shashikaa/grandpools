@@ -146,9 +146,9 @@ export default function LuxuryStage({ children, kind = "standard", flow = false,
               copyCues.forEach(cue => { if (self.progress >= cue.at) playCopy(cue.split); });
             },
           } });
-          if (transition === 'slide' || transition === 'flow') enter.to({}, { duration: 1 }, 0);
+          if (mobile || transition === 'slide' || transition === 'flow') enter.to({}, { duration: 1 }, 0);
           else enter.fromTo(curtain, { y: () => -viewportHeight() }, { y: 0, force3D: true, duration: 1, ease: 'none' }, 0);
-          if (!splitEntry && transition !== 'slide' && transition !== 'flow') {
+          if (!mobile && !splitEntry && transition !== 'slide' && transition !== 'flow') {
             const closedMask = () => transition === 'curtain'
               ? 'inset(0px 100% 0px 0px)' : `inset(${viewportHeight()}px 0px 0px 0px)`;
             enter.fromTo(curtain, { clipPath: closedMask }, { clipPath: 'inset(0px 0px 0px 0px)', duration: maskRevealEnd, ease: 'none' }, 0);

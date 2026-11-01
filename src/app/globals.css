@@ -851,3 +851,10 @@ button.btn-underline:hover::after,
  body { overflow-x:clip; overflow-y:visible; }
  .site-root { overflow-x:clip; }
 }
+
+/* iOS touch scrolling is composited independently of JS. Let incoming mobile
+   scenes move naturally instead of counter-translating and masking every frame.
+   Inner image wipes and text stories are still scroll controlled. */
+@media (max-width:1024px) {
+ .luxury-stage-reveal { transform:none !important; clip-path:none !important; will-change:auto; }
+}
