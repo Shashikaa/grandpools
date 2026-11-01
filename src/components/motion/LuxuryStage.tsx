@@ -40,6 +40,9 @@ export default function LuxuryStage({ children, kind = "standard", flow = false,
     const scope = root.current;
     if (!scope || !preloaderDone) return;
     const mobileHeight = mobile ? stableSceneHeight() : 0;
+    // CSS and the story timeline must share the exact same frozen pixels.
+    // Keeping CSS in lvh while JS captured pixels lets WebKit resize only one.
+    if (mobile) scope.style.setProperty("--scene-viewport", `${mobileHeight}px`);
     const viewportHeight = () => mobile ? mobileHeight : window.innerHeight;
     let disposed = false;
     let context: gsap.Context | undefined;
@@ -123,7 +126,7 @@ export default function LuxuryStage({ children, kind = "standard", flow = false,
           const total = geometry.height;
           const changed = Math.abs(scope.offsetHeight - total) > 1;
           scope.style.height = `${total}px`;
-          scope.style.setProperty('--scene-top', `${geometry.top}px`);
+          scope.style.setProperty('--scene-top', `${mobile && !flow ? 0 : geometry.top}px`);
           scope.dataset.hold = 'sticky';
           return changed;
         };
@@ -298,7 +301,7 @@ export default function LuxuryStage({ children, kind = "standard", flow = false,
         }
         let storyTrigger: ScrollTrigger | undefined;
         if (pinned) {
-          const st = ScrollTrigger.create({ trigger: scope, animation: timeline, start: () => `top ${Math.min(0, viewportHeight() - view.offsetHeight)}px`, end: () => `+=${viewportHeight() * (story + handoff)}`, scrub: true, invalidateOnRefresh: true, onRefreshInit: measure });
+          const st = ScrollTrigger.create({ trigger: scope, animation: timeline, start: () => `top ${(mobile && !flow ? 0 : Math.min(0, viewportHeight() - view.offsetHeight))}px`, end: () => `+=${viewportHeight() * (story + handoff)}`, scrub: true, invalidateOnRefresh: true, onRefreshInit: measure });
           storyTrigger = st;
           const fraction = story / (story + handoff);
           scope.dataset.storyFraction = String(fraction);
@@ -339,7 +342,7 @@ export default function LuxuryStage({ children, kind = "standard", flow = false,
       refreshMotionLayout();
     };
     document.fonts.ready.then(initialize);
-    return () => { disposed = true; layoutObserver?.disconnect(); scope.style.removeProperty('height'); scope.style.removeProperty('--scene-top'); delete scope.dataset.hold; revealTweens.forEach(tween => tween.kill()); context?.revert(); splits.forEach(split => split.revert()); };
+    return () => { disposed = true; layoutObserver?.disconnect(); scope.style.removeProperty('height'); scope.style.removeProperty('--scene-top'); scope.style.removeProperty('--scene-viewport'); delete scope.dataset.hold; revealTweens.forEach(tween => tween.kill()); context?.revert(); splits.forEach(split => split.revert()); };
   }, [preloaderDone, kind, flow, steps, skipText, smootherRef, mobile, viewportWidth, transition]);
 
   return <section ref={root} data-luxury-stage={kind} data-transition={transition} className={`luxury-stage ${flow ? 'luxury-flow' : ''} ${className}`}>
