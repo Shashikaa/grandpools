@@ -17,3 +17,5 @@ The test environment does not provide physical iPhone Safari. Its address bar wi
 This ZIP does not push to GitHub or deploy Vercel.
 
 Second iOS pass (2026-11-01): mobile section entrances now slide naturally above the outgoing section. Whole-scene counter-translation and mask clipping are disabled on mobile to avoid competing with asynchronous iOS touch scrolling. Desktop masks and inner stories are retained. Production build and all 17 checks pass; phone-width browser inspection confirms mobile scene wrappers have no transform or mask. Real-device iPhone validation remains required.
+
+Coverage pass: mobile reveal/surface wrappers have definite stable viewport heights; direct section roots fill that height. About statistics and Experts/App panels now match the large viewport instead of 100svh. Native mobile slide-over entrances are retained. Build/TypeScript and 17 motion checks passed; physical iPhone toolbar coverage still needs confirmation.

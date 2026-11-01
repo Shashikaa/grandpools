@@ -858,3 +858,21 @@ button.btn-underline:hover::after,
 @media (max-width:1024px) {
  .luxury-stage-reveal { transform:none !important; clip-path:none !important; will-change:auto; }
 }
+
+/* Full-screen content must fill the same stable viewport as its scene track.
+   A min-height alone leaves percentage-height children on the smaller viewport
+   in WebKit, exposing the page background when the toolbar retracts. */
+@media (max-width:1024px) {
+ .luxury-page > .luxury-stage:not(.luxury-flow) > .luxury-stage-view > .luxury-stage-reveal,
+ .luxury-page > .luxury-stage:not(.luxury-flow) > .luxury-stage-view > .luxury-stage-reveal > .luxury-stage-surface {
+   height:var(--scene-viewport); min-height:var(--scene-viewport);
+ }
+ .luxury-page > .luxury-stage:not(.luxury-flow) > .luxury-stage-view > .luxury-stage-reveal > .luxury-stage-surface > :is(section,div) {
+   min-height:var(--scene-viewport);
+ }
+ .luxury-page .luxury-about-stats .s5-stats-section {
+   height:var(--scene-viewport); min-height:var(--scene-viewport);
+ }
+ .luxury-page .luxury-expert-panel { height:var(--scene-viewport); }
+ .luxury-page .luxury-app-panel { min-height:var(--scene-viewport); }
+}
